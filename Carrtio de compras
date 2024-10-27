@@ -11,6 +11,7 @@ int cantidades[MAX_PRODUCTOS];  // Cantidades de cada producto
 int numProductos = 0;           // Número actual de productos en el carrito
 
 // Agregar un producto al carrito
+//Lo cambie a void para que solo se indique la accion y no devuela ningun valor por que al correr el codigo por usar un return
 void agregarProducto(string nombre, double precio, int cantidad) {
     if (numProductos < MAX_PRODUCTOS) {
         nombres[numProductos] = nombre;

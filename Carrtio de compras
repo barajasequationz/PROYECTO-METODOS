@@ -1,0 +1,75 @@
+//Parte del codigo de el carrito de compras
+#include <iostream>
+#include <string>
+using namespace std;
+
+const int MAX_PRODUCTOS = 10; // Capacidad máxima del carrito
+
+string nombres[MAX_PRODUCTOS];  // Nombres de los productos
+double precios[MAX_PRODUCTOS];  // Precios de los productos
+int cantidades[MAX_PRODUCTOS];  // Cantidades de cada producto
+int numProductos = 0;           // Número actual de productos en el carrito
+
+// Agregar un producto al carrito
+void agregarProducto(string nombre, double precio, int cantidad) {
+    if (numProductos < MAX_PRODUCTOS) {
+        nombres[numProductos] = nombre;
+        precios[numProductos] = precio;
+        cantidades[numProductos] = cantidad;
+        cout << nombre << " agregado al carrito." << endl;
+        numProductos++;
+    } else {
+        cout << "Carrito lleno." << endl;
+    }
+}
+
+// Eliminar un producto del carrito por su nombre
+void eliminarProducto(string nombre) {
+    for (int i = 0; i < numProductos; i++) {
+        if (nombres[i] == nombre) {
+            cout << nombres[i] << " eliminado del carrito." << endl;
+            for (int j = i; j < numProductos - 1; j++) {
+                nombres[j] = nombres[j + 1];
+                precios[j] = precios[j + 1];
+                cantidades[j] = cantidades[j + 1];
+            }
+            numProductos--;
+            return;
+        }
+    }
+    cout << "Producto no encontrado." << endl;
+}
+
+// Mostrar productos en el carrito
+void mostrarCarrito() {
+    cout << "Productos en el carrito:" << endl;
+    for (int i = 0; i < numProductos; i++) {
+        cout << "- " << nombres[i] << ": $" << precios[i] << " x" << cantidades[i] << endl;
+    }
+}
+
+// Calcular el total con impuesto y descuento
+//Con esta parte de desceuntos sera mejorada para que haya varios tipos de descuentos tipo 3x2 y asi 
+double calcularTotal(double impuesto = 0.16, double descuento = 0.0) {
+    double total = 0;
+    for (int i = 0; i < numProductos; i++) {
+        total += precios[i] * cantidades[i];
+    }
+    total += total * impuesto;
+    total -= total * descuento;
+    return total;
+}
+
+int main() {
+    agregarProducto("Manzana", 1.50, 3);
+    agregarProducto("Leche", 2.30, 1);
+    mostrarCarrito();
+
+    double total = calcularTotal(0.16, 0.10);
+    cout << "Total de su compra en barajas shop: $" << total << endl;
+
+    eliminarProducto("Manzana");
+    mostrarCarrito();
+
+    return 0;
+}

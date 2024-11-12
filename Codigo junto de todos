@@ -1,0 +1,167 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+#ifdef _WIN32
+    #define CLEAR_COMMAND "cls"
+#else
+    #define CLEAR_COMMAND "clear"
+#endif
+
+const int MAX_PRODUCTOS_INVENTARIO = 100;
+const int MAX_PRODUCTOS_CARRITO = 10;
+
+struct Producto {
+    int id;
+    string nombre;
+    int cantidad;
+    double precio;
+};
+
+Producto inventario[MAX_PRODUCTOS_INVENTARIO];
+int totalProductosInventario = 0;
+
+string nombres[MAX_PRODUCTOS_CARRITO];
+double precios[MAX_PRODUCTOS_CARRITO];
+int cantidades[MAX_PRODUCTOS_CARRITO];
+int numProductosCarrito = 0;
+
+void clearConsole() {
+    system(CLEAR_COMMAND);
+}
+
+void inicializarProductos() {
+    Producto productosIniciales[100] = {
+        {1, "Arroz", 100, 1.20}, {2, "Frijol", 80, 1.50}, {3, "Lentejas", 75, 1.30},
+        {4, "Pasta de coditos", 120, 0.80}, {5, "Spaghetti", 110, 0.85},
+        {6, "Harina", 90, 0.75}, {7, "Aceite", 70, 2.00}, {8, "Sal", 200, 0.40},
+        {9, "Azúcar", 160, 0.60}, {10, "Leche", 140, 1.10}, {11, "Yogurt", 100, 1.30},
+        {12, "Mantequilla", 80, 1.50}, {13, "Queso", 70, 2.20}, {14, "Huevos", 90, 1.60},
+        {15, "Pan", 130, 0.90}, {16, "Cereal", 100, 2.10}, {17, "Jugo", 70, 1.70},
+        {18, "Soda", 150, 1.20}, {19, "Agua", 200, 0.50}, {20, "Café", 80, 1.80},
+        {21, "Té", 75, 1.40}, {22, "Chocolate", 90, 1.60}, {23, "Gelatina", 100, 0.70},
+        {24, "Mermelada de fresa", 80, 1.10}, {25, "Catsup", 70, 1.30}, {26, "Mostaza", 90, 1.20},
+        {27, "Mayonesa", 60, 1.10}, {28, "Salsa picante", 100, 0.90}, {29, "Vinagre", 110, 0.60},
+        {30, "Ajo", 120, 0.20}, {31, "Cebolla", 130, 0.30}, {32, "Tomate", 100, 0.50},
+        {33, "Zanahoria", 110, 0.40}, {34, "Pimiento", 80, 0.70}, {35, "Pepino", 75, 0.60},
+        {36, "Calabaza", 90, 0.45}, {37, "Papas", 120, 0.80}, {38, "Maíz", 110, 0.75},
+        {39, "Espinaca", 100, 0.50}, {40, "Lechuga", 140, 0.30}, {41, "Manzana", 130, 1.20},
+        {42, "Plátano", 150, 0.40}, {43, "Naranja", 140, 0.50}, {44, "Limón", 110, 0.30},
+        {45, "Fresa", 100, 1.50}, {46, "Mango", 90, 1.00}, {47, "Uvas", 80, 2.00},
+        {48, "Sandía", 70, 0.90}, {49, "Melón", 75, 1.10}, {50, "Pera", 100, 1.30},
+        {51, "Carne de res", 100, 4.50}, {52, "Pollo", 120, 3.00}, {53, "Pescado", 90, 3.50},
+        {54, "Camarones", 80, 5.00}, {55, "Salchichas", 110, 2.10}, {56, "Tocino", 90, 2.30},
+        {57, "Jamón", 100, 1.90}, {58, "Tortillas", 120, 0.60}, {59, "Galletas", 130, 1.20},
+        {60, "Pastel", 80, 2.50}, {61, "Pizza", 60, 3.00}, {62, "Helado", 70, 1.80},
+        {63, "Empanadas", 100, 1.70}, {64, "Chile verde", 110, 0.50}, {65, "Chicles", 150, 0.20},
+        {66, "Refresco", 200, 1.20}, {67, "Vino", 50, 10.00}, {68, "Cerveza", 100, 1.60},
+        {69, "Whiskey", 60, 15.00}, {70, "Vodka", 70, 12.00}, {71, "Smirnoff", 90, 9.00},
+        {72, "Jengibre", 90, 0.90}, {73, "Cilantro", 110, 0.40}, {74, "Perejil", 100, 0.30},
+        {75, "Romero", 80, 0.50}, {76, "Laurel", 70, 0.30}, {77, "Pasta dental", 120, 1.50},
+        {78, "Shampoo", 100, 2.00}, {79, "Jabón", 130, 1.10}, {80, "Detergente", 90, 3.50},
+        {81, "Limpiador", 100, 2.70}, {82, "Esponjas", 80, 0.70}, {83, "Papel higiénico", 150, 0.90},
+        {84, "Toallas de papel", 120, 1.00}, {85, "Servilletas", 130, 0.50},
+        {86, "Cucharas", 100, 0.30}, {87, "Tenedores", 90, 0.30}, {88, "Cuchillos", 80, 0.40},
+        {89, "Galletas emperador de limon", 120, 0.80}, {90, "Vasos", 110, 0.70}, {91, "Dr pepper", 60, 5.50},
+        {92, "Sartenes", 70, 4.50}, {93, "Bacardi", 90, 11.00}, {94, "Manteca", 100, 1.10},
+        {95, "Hielo", 80, 0.20}, {96, "Carbón", 60, 2.30}, {97, "Palomitas", 90, 1.20},
+        {98, "Almendras", 100, 3.10}, {99, "Nueces", 110, 3.50}, {100, "Cacahuates", 130, 1.90}
+    };
+
+    for (int i = 0; i < 100; i++) {
+        inventario[totalProductosInventario++] = productosIniciales[i];
+    }
+}
+
+void mostrarInventario() {
+    cout << "\nINVENTARIO:\n";
+    cout << "ID\tNombre\tCantidad\tPrecio" << endl;
+    for (int i = 0; i < totalProductosInventario; i++) {
+        cout << inventario[i].id << "\t" << inventario[i].nombre << "\t"
+             << inventario[i].cantidad << "\t$" << inventario[i].precio << endl;
+    }
+}
+
+void agregarProductoCarrito(int id, int cantidad) {
+    for (int i = 0; i < totalProductosInventario; i++) {
+        if (inventario[i].id == id && inventario[i].cantidad >= cantidad) {
+            if (numProductosCarrito < MAX_PRODUCTOS_CARRITO) {
+                nombres[numProductosCarrito] = inventario[i].nombre;
+                precios[numProductosCarrito] = inventario[i].precio;
+                cantidades[numProductosCarrito] = cantidad;
+                numProductosCarrito++;
+                inventario[i].cantidad -= cantidad;
+                cout << "Producto agregado al carrito!" << endl;
+                return;
+            } else {
+                cout << "El carrito está lleno!" << endl;
+                return;
+            }
+        }
+    }
+    cout << "Producto no encontrado o cantidad insuficiente!" << endl;
+}
+
+void mostrarCarrito() {
+    double total = 0;
+    cout << "\nCARRITO DE COMPRAS:\n";
+    cout << "Producto\tCantidad\tPrecio\tTotal" << endl;
+    for (int i = 0; i < numProductosCarrito; i++) {
+        double subtotal = precios[i] * cantidades[i];
+        total += subtotal;
+        cout << nombres[i] << "\t" << cantidades[i] << "\t$" << precios[i] << "\t$" << subtotal << endl;
+    }
+    cout << "Total a pagar: $" << total << endl;
+    cout << "¿Deseas pagar con tarjeta o efectivo? (T/E): ";
+    char pago;
+    cin >> pago;
+    if (pago == 'T' || pago == 't') {
+        cout << "Pago realizado con tarjeta. ¡Gracias por tu compra!" << endl;
+    } else if (pago == 'E' || pago == 'e') {
+        cout << "Pago realizado en efectivo. ¡Gracias por tu compra!" << endl;
+    } else {
+        cout << "Opción inválida. Inténtalo de nuevo." << endl;
+    }
+}
+
+int main() {
+    inicializarProductos();
+    int opcion, id, cantidad;
+
+    while (true) {
+        clearConsole();
+        cout << "Bienvenido al Supermercado Virtual!" << endl;
+        cout << "1. Ver Inventario" << endl;
+        cout << "2. Agregar producto al carrito" << endl;
+        cout << "3. Ver Carrito" << endl;
+        cout << "4. Salir" << endl;
+        cout << "Elige una opción: ";
+        cin >> opcion;
+
+        switch (opcion) {
+            case 1:
+                mostrarInventario();
+                break;
+            case 2:
+                cout << "Ingresa el ID del producto: ";
+                cin >> id;
+                cout << "Ingresa la cantidad: ";
+                cin >> cantidad;
+                agregarProductoCarrito(id, cantidad);
+                break;
+            case 3:
+                mostrarCarrito();
+                break;
+            case 4:
+                cout << "¡Gracias por visitarnos! ¡Hasta pronto!" << endl;
+                return 0;
+            default:
+                cout << "Opción inválida. Inténtalo de nuevo." << endl;
+        }
+
+        cout << "\nPresiona Enter para continuar...";
+        cin.ignore();
+        cin.get();
+    }
+    return 0;
+}

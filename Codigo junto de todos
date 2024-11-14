@@ -113,16 +113,58 @@ void mostrarCarrito() {
     }
     cout << "Total a pagar: $" << total << endl;
     cout << "¿Deseas pagar con tarjeta o efectivo? (T/E): ";
-    char pago;
+    int pago;
+    cout << "DE QUE FORMA QUIERES PAGAR?\n1. EFECTIVO EN TU TIENDA MAS CERCANA\n2. TARJETA DE CREDITO/DEBITO" << endl;
     cin >> pago;
-    if (pago == 'T' || pago == 't') {
-        cout << "Pago realizado con tarjeta. ¡Gracias por tu compra!" << endl;
-    } else if (pago == 'E' || pago == 'e') {
-        cout << "Pago realizado en efectivo. ¡Gracias por tu compra!" << endl;
-    } else {
-        cout << "Opción inválida. Inténtalo de nuevo." << endl;
-    }
-}
+    switch (pago){
+            case 1: {
+            clearConsole();
+            cout << "\033[1;32mTU ORDEN HA SIDO PROCESADA. TIENES 48 HORAS PARA PAGAR UN TOTAL DE $" << total << " EN EFECTIVO EN TU TIENDA MAS CERCANA; DE LO CONTRARIO, TU ORDEN SERA CANCELADA.\033[0m" << endl;
+            break;
+            }
+            case 2: {
+            clearConsole();
+
+            string numTarj;
+            int mes, year;
+
+            // VALIDACION DEL NUMERO DE TARJETA
+            cout << "INGRESE EL NUMERO DE TARJETA (16 DIGITOS): ";
+            cin >> numTarj;
+            while (numTarj.length() != 16) {
+            clearConsole();
+            cout << "\033[1;31mNUMERO INVALIDO. INGRESE UN NUMERO DE TARJETA VALIDO DE 16 DIGITOS:\033[0m ";
+            cin >> numTarj;
+            }
+
+            // FECHA DE VENCIMIENTO
+            cout << "INGRESE EL MES DE VENCIMIENTO (MM): ";
+            cin >> mes;
+            cout << "INGRESE EL ANO DE VENCIMIENTO (AA): ";
+            cin >> year;
+
+                            // CONFIRMACION DE PAGO
+            cout << "\033[1;32mSE REALIZARA EL PAGO DE $" << total << " CON LA TARJETA QUE TERMINA EN " << numTarj.substr(12, 4) << "\033[0m" << endl;
+            cout << "CONFIRMAR PAGO? (S/N): ";
+            char confirm;
+            cin >> confirm;
+
+            if (confirm == 'S' || confirm == 's') {
+            clearConsole();
+            cout << "\033[1;32mCOMPRA CONFIRMADA. GRACIAS POR SU COMPRA!\033[0m" << endl;
+            } else {
+            clearConsole();
+            cout << "\033[1;31mCOMPRA RECHAZADA, INTENTE DE NUEVO.\033[0m" << endl;
+        }
+            break;
+        }
+
+        default:
+            cout << "\033[1;31mOPCION DE PAGO NO VALIDA.\033[0m" << endl;
+            break;
+                    }
+                }
+
 
 int main() {
     inicializarProductos();
@@ -163,5 +205,8 @@ int main() {
         cin.ignore();
         cin.get();
     }
+    return 0;
+}
+
     return 0;
 }

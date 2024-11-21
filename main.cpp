@@ -13,40 +13,40 @@ struct Producto {
 // Arreglo de productos de la tienda
 const int sizeproductos = 100;
 Producto productosTienda[sizeproductos] = {
-   {1, "Arroz", 100, 1.20}, {2, "Frijol", 80, 1.50}, {3, "Lentejas", 75, 1.30},
-        {4, "Pasta de coditos", 120, 0.80}, {5, "Spaghetti", 110, 0.85},
-        {6, "Harina", 90, 0.75}, {7, "Aceite", 70, 2.00}, {8, "Sal", 200, 0.40},
-        {9, "Az�car", 160, 0.60}, {10, "Leche", 140, 1.10}, {11, "Yogurt", 100, 1.30},
-        {12, "Mantequilla", 80, 1.50}, {13, "Queso", 70, 2.20}, {14, "Huevos", 90, 1.60},
-        {15, "Pan", 130, 0.90}, {16, "Cereal", 100, 2.10}, {17, "Jugo", 70, 1.70},
-        {18, "Soda", 150, 1.20}, {19, "Agua", 200, 0.50}, {20, "Caf�", 80, 1.80},
-        {21, "T�", 75, 1.40}, {22, "Chocolate", 90, 1.60}, {23, "Gelatina", 100, 0.70},
-        {24, "Mermelada de fresa", 80, 1.10}, {25, "Catsup", 70, 1.30}, {26, "Mostaza", 90, 1.20},
-        {27, "Mayonesa", 60, 1.10}, {28, "Salsa picante", 100, 0.90}, {29, "Vinagre", 110, 0.60},
-        {30, "Ajo", 120, 0.20}, {31, "Cebolla", 130, 0.30}, {32, "Tomate", 100, 0.50},
-        {33, "Zanahoria", 110, 0.40}, {34, "Pimiento", 80, 0.70}, {35, "Pepino", 75, 0.60},
-        {36, "Calabaza", 90, 0.45}, {37, "Papas", 120, 0.80}, {38, "Ma�z", 110, 0.75},
-        {39, "Espinaca", 100, 0.50}, {40, "Lechuga", 140, 0.30}, {41, "Manzana", 130, 1.20},
-        {42, "Platano", 150, 0.40}, {43, "Naranja", 140, 0.50}, {44, "Lim�n", 110, 0.30},
-        {45, "Fresa", 100, 1.50}, {46, "Mango", 90, 1.00}, {47, "Uvas", 80, 2.00},
-        {48, "Sand�a", 70, 0.90}, {49, "Mel�n", 75, 1.10}, {50, "Pera", 100, 1.30},
-        {51, "Carne de res", 100, 4.50}, {52, "Pollo", 120, 3.00}, {53, "Pescado", 90, 3.50},
-        {54, "Camarones", 80, 5.00}, {55, "Salchichas", 110, 2.10}, {56, "Tocino", 90, 2.30},
-        {57, "Jam�n", 100, 1.90}, {58, "Tortillas", 120, 0.60}, {59, "Galletas", 130, 1.20},
-        {60, "Pastel", 80, 2.50}, {61, "Pizza", 60, 3.00}, {62, "Helado", 70, 1.80},
-        {63, "Empanadas", 100, 1.70}, {64, "Chile verde", 110, 0.50}, {65, "Chicles", 150, 0.20},
-        {66, "Refresco", 200, 1.20}, {67, "Vino", 50, 10.00}, {68, "Cerveza", 100, 1.60},
-        {69, "Whiskey", 60, 15.00}, {70, "Vodka", 70, 12.00}, {71, "Smirnoff", 90, 9.00},
-        {72, "Jengibre", 90, 0.90}, {73, "Cilantro", 110, 0.40}, {74, "Perejil", 100, 0.30},
-        {75, "Romero", 80, 0.50}, {76, "Laurel", 70, 0.30}, {77, "Pasta dental", 120, 1.50},
-        {78, "Shampoo", 100, 2.00}, {79, "Jab�n", 130, 1.10}, {80, "Detergente", 90, 3.50},
-        {81, "Limpiador", 100, 2.70}, {82, "Esponjas", 80, 0.70}, {83, "Papel higi�nico", 150, 0.90},
-        {84, "Toallas de papel", 120, 1.00}, {85, "Servilletas", 130, 0.50},
-        {86, "Cucharas", 100, 0.30}, {87, "Tenedores", 90, 0.30}, {88, "Cuchillos", 80, 0.40},
-        {89, "Galletas emperador de limon", 120, 0.80}, {90, "Vasos", 110, 0.70}, {91, "Dr pepper", 60, 5.50},
-        {92, "Sartenes", 70, 4.50}, {93, "Bacardi", 90, 11.00}, {94, "Manteca", 100, 1.10},
-        {95, "Hielo", 80, 0.20}, {96, "Carb�n", 60, 2.30}, {97, "Palomitas", 90, 1.20},
-        {98, "Almendras", 100, 3.10}, {99, "Nueces", 110, 3.50}, {100, "Cacahuates", 130, 1.90}
+   {1, "Agua Mineral", 100, 25.00}, {2, "Agua Tonica", 80, 30.00}, {3, "Cafe", 75, 30.00},
+        {4, "Coca Cola", 120, 20.00}, {5, "Red Bull", 110, 45.00},
+        {6, "Monster Mango Loco", 90, 48.00}, {7, "Fanta de Naranja", 70, 22.00}, {8, "Fanta de Fresa", 200, 22.00},
+        {9, "Jugo de Arandano", 160, 47.00}, {10, "Jugo de Mango", 140, 24.00}, {11, "Jugo de Piña", 100, 46.00},
+        {12, "Jugo de Naranja", 80, 46.00}, {13, "Jaggermeister", 70, 550}, {14, "Limonada", 90, 23.00},
+        {15, "Smirnoff", 130, 230.00}, {16, "Te Helado", 100, 20.00}, {17, "Te Verde", 70, 20.00},
+        {18, "Powerade", 150, 24.00}, {19, "Arizona Sandia", 200, 18.00}, {20, "Hidromiel", 80, 260.00},
+        {21, "Kg. Aguacate", 75,45.00}, {22, "Kg. Arandano", 90, 120.00}, {23, "Kg. Banana", 100, 22.70},
+        {24, "Kg. Brocoli", 80, 69.00}, {25, "Kg. Calabaza", 70, 34.30}, {26, "Frasco Cerezas 300g", 90, 31.20},
+        {27, "Durazno en Almibar", 60, 59.99}, {28, "Manojo de Esparrago", 100, 49.90}, {29, "Kg. Fresa", 110, 160.00},
+        {30, "Kg. Granada", 120, 50.00}, {31, "Kg. Kiwi", 130, 92.00}, {32, "Kg. Tomate", 100, 54.50},
+        {33, "Kg. Zanahoria", 110, 29.40}, {34, "Kg. Pimiento", 80, 27.70}, {35, "Kg. Pepino", 75, 36.60},
+        {36, "Kg. Papaya", 90, 20.00}, {37, "Kg. Papas", 120, 45.80}, {38, "Pera", 110, 60.00},
+        {39, "Kg. Espinaca", 100, 20.00}, {40, "Pz. Lechuga", 140, 26.00}, {41, "Aceite de Cocina", 130, 55.00},
+        {42, "Avena", 150, 38.00}, {43, "Azucar", 140, 50.00}, {44, "Cafe Instantaneo", 110, 65.00},
+        {45, "Canela en Polvo", 100, 35.00}, {46, "Corn Flakes", 90, 56.00}, {47, "Chocomilk", 80, 37.00},
+        {48, "Kg. Frijoles", 70, 46.00}, {49, "Kg. Garbanzos", 75, 43.00}, {50, "Kg. Harina de Maiz", 100, 21.30},
+        {51, "Harina de Trigo", 100, 18.50}, {52, "Kg. Lentejas", 120, 83.00}, {53, "Maicena", 90, 23.50},
+        {54, "Kg. Nueces", 80, 250.00}, {55, "Espaguetis", 110, 32.10}, {56, "Pimienta", 90, 22.30},
+        {57, "Sal", 100, 21.90}, {58, "Sopa Maruchan", 120, 10.60}, {59, "Galletas Emperador de Limon", 130, 21.20},
+        {60, "Almendras", 80, 2.50}, {61, "Carne de Cerdo", 60, 3.00}, {62, "Carne de Res", 70, 1.80},
+        {63, "Kg. Carne Molida", 100, 81.70}, {64, "Chorizo Pza.", 110, 20.50}, {65, "Crema", 150, 25.20},
+        {66, "Kg. Filete de Pescado", 200, 81.20}, {67, "Huevos Pza.", 50, 6.00}, {68, "Jamon", 100, 41.60},
+        {69, "Galon de Leche", 60, 55.00}, {70, "Mantequilla Pza.", 70, 22.00}, {71, "Kg. Pechuga de Pollo", 90, 99.00},
+        {72, "Piernas de Pollo", 90, 0.90}, {73, "Nuggets de Pollo", 110, 0.40}, {74, "Queso Monterrey", 100, 0.30},
+        {75, "Salchichas", 80, 50.50}, {76, "Tocino", 70, 80.30}, {77, "Kg. Pavo", 120, 121.50},
+        {78, "Yogur", 100, 2.00}, {79, "Yakult", 130, 1.10}, {80, "Danonino", 90, 3.50},
+        {81, "Detergente", 100, 152.70}, {82, "Esponjas", 80, 9.70}, {83, "Papel higienico 20 rollos", 150, 99.90},
+        {84, "Toallas de papel", 120, 31.00}, {85, "Servilletas", 130, 30.50},
+        {86, "Jabon de Tocador Pza", 100, 9.30}, {87, "Fabuloso", 90, 45.30}, {88, "Pinol", 80, 38.40},
+        {89, "Jabon para Trastes", 120, 30.80}, {90, "Shampoo", 110, 89.70}, {91, "Suavitel", 60, 75.50},
+        {92, "Pasta Dental", 70, 74.50}, {93, "Limpiador Multiusos", 90, 41.00}, {94, "Trapeador", 100, 51.10},
+        {95, "Clorox", 80, 20.20}, {96, "Cepillos de Dientes", 60, 92.30}, {97, "Guantes para limpieza", 90, 21.20},
+        {98, "Escoba", 100, 63.10}, {99, "10 Bolsas de Basura", 110, 13.50}, {100, "Trapos Pza.", 130, 11.90}
 };
 
 
@@ -72,7 +72,7 @@ double calcularTotal(double impuesto = 0.16, double descuento = 0.0) {
     for (int i = 0; i < numProductosCarrito; i++) {
         total += preciosCarrito[i] * cantidadesCarrito[i];
     }
-    total += total * impuesto;  // A�adir impuestos
+    total += total * impuesto;  // Anadir impuestos
     total -= total * descuento;  // Aplicar descuento
     return total;
 }
